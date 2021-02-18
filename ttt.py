@@ -16,11 +16,10 @@ df_columns = ['gameNr', 'winner', 'xPlayer', 'oPlayer',
 
 
 def load_model(agent):
-
     """
-    todo: description
-    :param agent:
-    :return:
+    Load the keras model from file
+    :param agent (char1): L or S
+    :return: loaded_model (keras model)
     """
 
     if agent == 'S':
@@ -325,6 +324,7 @@ def insert_letter(letter, pos, i_game_nr, int_board, int_moves_hist):
 
 # check if the board is full
 def isBoardFull(board):
+    """checks if the board is full, if full the function will return a true"""
     if board.count(' ') > 1:
         return False
     else:
@@ -332,7 +332,12 @@ def isBoardFull(board):
 
 
 def make_prediction_math(iboard, ynew):
-
+    """
+    Make a prediction using the boardstate
+    :param iboard: board = [' '] * 10 containing the board state
+    :param ynew: (array) containing the output of the NN
+    :return: (array) New output based on this function
+    """
     gamma = 3
     irandomness = 0.9
 
@@ -390,8 +395,15 @@ def make_prediction_math(iboard, ynew):
 
 
 def make_prediction(iboard, player, loaded_modelS, loaded_modelL):
-    ## todo: complete this function uncomment
-
+    """
+    make a prediction based on the board.
+    :param iboard: array containing the board state
+    :param player: Player S or L
+    :param loaded_modelS: the loaded keras model containing agent S
+    :param loaded_modelL: the loaded keras model containing agent L
+    :return: prednr (int) position on the board that shoud be played
+             out_ynew (array) output if neural net and adjustments made
+    """
     iX = np.zeros((1, 18), dtype=int)
     iX[0] = np.array(boardToX(iboard))
 
@@ -815,73 +827,12 @@ def print_progress(total, counter, outputs, info, p_board=False):
 
 def main():
 
-    player_1 = 'U'
-    player_2 = 'S'
-    print_board = False
-    nr_of_games = 10000
-    nr_of_files = 1
-    game_nr = 0
-
-    # play the game nrOfGames times
-    total_nr_of_games = nr_of_files * nr_of_games
-
-    # create empty dataframes
-    df_all_played_games = create_df_all_played_games()
-    df_training_stats = create_df_training_stats()
-
-    # create empty numpy
-    np_all_played_games = df_all_played_games.to_numpy()
-
-    # load Agent Smit
     loaded_modelS = load_model('S')
-    loaded_modelS.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
-
-
-    # load Agent Linki
     loaded_modelL = load_model('L')
-    loaded_modelL.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accuracy'])
 
-    # play the game nrOfGames times
-    for igame in range(nr_of_games):
-        # play tic tac toe
-        game_nr = game_nr + 1
+    np_played_games = play_game('L', 'H', 1, True,
+                                    loaded_modelS, loaded_modelL).to_numpy()
 
-        # key for game
-        today = date.today()
-        current_date = today.strftime("%d%m%Y")
-        now = datetime.now()
-        current_time = now.strftime("%H%M%S")
-        i_game_nr = str(current_date) + str(current_time) + str(game_nr)
-        i_game_nr = int(i_game_nr)
-
-        # play the actual game
-        np_played_games = play_game(player_1, player_2, i_game_nr, print_board, loaded_modelS, loaded_modelL).to_numpy()
-        np_all_played_games = np.vstack((np_all_played_games, np_played_games))
-
-        game_nr = game_nr + 1
-        # play the actual game - swap players
-        np_played_games = play_game(player_2, player_1, i_game_nr, print_board, loaded_modelS, loaded_modelL).to_numpy()
-        np_all_played_games = np.vstack((np_all_played_games, np_played_games))
-
-        # print how may games have been played
-        print_progress(total_nr_of_games, game_nr, 50, 'games played...')
-
-    # save the games into a dataframe
-    df_all_played_games = pd.DataFrame(data=np_all_played_games, columns=df_columns)
-
-    print('')
-    # training process 1
-    # df_training_stats = get_training_stats(df_all_played_games, df_training_stats, 0)
-    print(df_training_stats[df_training_stats['nr'] == 1])
-
-    # training process 2
-    df_training_stats = get_training_stats(df_all_played_games, df_training_stats, 1)
-    print(df_training_stats[df_training_stats['nr'] == 2])
-
-    # training process 3
-    # df_training_stats = get_training_stats(df_all_played_games, df_training_stats, 2)
-    print(df_training_stats[df_training_stats['nr'] == 3])
-
-    # print(df_training_stats[df_training_stats['nr'] == 2], end = "\r")
+    print(np_played_games)
 
 
