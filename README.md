@@ -4,7 +4,18 @@ The objective of this notebook is to train an AI agent to play Tic Tac Toe. The 
 
 ## Getting Started
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
+The notebook <strong>tic_tac_toe_dl.ipynb</strong> contain the training logic. The program has wo main processes, the generation of data and the training of the models. 
+The parameters below in <strong>tic_tac_toe_dl.ipynb</strong> as defined in under <strong>Parameters</strong>, manages the parts that will be executed.  They can be changed as required.
+
+Setting all these parameters to True in the section below, will lead to the notebook running rather long.
+do_gen_ifile_UU -> set to true if untrained agent should play against untrained agent
+do_gen_ifile_US -> set to true if untrained agent should play against untrained agent
+do_gen_ifile_SS -> set to true if untrained agent should play against agent S
+do_gen_ifile_SH -> set to True if agent S should play against agent S
+do_train_modelS -> set to True if agent s vs human game should be played
+do_train_modelL -> set to True if model S should be trained
+do_final_evaluL -> set to True if the final evaluation should be executed
+
 
 ### Prerequisites
 
@@ -34,47 +45,11 @@ End with an example of getting some data out of the system or using it for a lit
 
 ## Running the tests
 
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-## Deployment
-
-Add additional notes about how to deploy this on a live system
-
-## Built With
-
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - The web framework used
-* [Maven](https://maven.apache.org/) - Dependency Management
-* [ROME](https://rometools.github.io/rome/) - Used to generate RSS Feeds
-
-## Contributing
-
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags). 
+the unit test can be run by typing in pytest in the console. The test are checking basic logic.
 
 ## Authors
 
-* **Billie Thompson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+* **Danie Smit** - *Initial work* - [tic-tac-toe and deep learning](https://github.com/D5mit/tic-tac-toe_deep_learning)
 
 ## License
 
@@ -82,6 +57,4 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## Acknowledgments
 
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
+* Udacity
