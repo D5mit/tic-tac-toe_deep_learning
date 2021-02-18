@@ -41,11 +41,23 @@ pip3 install pandas
 pip3 install matplotlib
 pip3 install keras
 pip3 install tensorflow
+pip3 install sklearn
 ```
+
+## Training data
+The game creates its own training data, however this takes a while to run, for each of use some training data is included:
+[Training data](https://s3.us-east-2.amazonaws.com/d5mit.co.za/ttt_training_data/training_data.zip)
+The notebook uses this data, however this can be changed in the Parameters section.
 
 ## Running the tests
 
 the unit test can be run by typing in pytest in the console. The test are checking basic logic.
+
+## See the model in action
+To see the model in action you can visit these two apps:
+- [Tic Tac Toe](http://ec2-3-17-207-44.us-east-2.compute.amazonaws.com/tictactoe)
+- [Game of scrabble](http://ec2-3-17-207-44.us-east-2.compute.amazonaws.com/tictactoecard) <br>
+  (github link for these applications: [d5mit](https://github.com/D5mit/d5mit_flask))
 
 ## Author
 
