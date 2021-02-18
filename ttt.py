@@ -833,6 +833,7 @@ def main():
     np_played_games = play_game('L', 'H', 1, True,
                                     loaded_modelS, loaded_modelL).to_numpy()
 
+    print('Moves made:')
     print(np_played_games)
 
 

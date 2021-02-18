@@ -55,8 +55,8 @@ the unit test can be run by typing in pytest in the console. The test are checki
 
 ## See the model in action
 To see the model in action you can visit these two apps:
-- [Tic Tac Toe](http://ec2-3-17-207-44.us-east-2.compute.amazonaws.com/tictactoe)
-- [Game of scrabble](http://ec2-3-17-207-44.us-east-2.compute.amazonaws.com/tictactoecard) <br>
+- [Tic Tac Toe](https://s3.us-east-2.amazonaws.com/d5mit.co.za/ttt_training_data/ttt.html)
+- [Game of scrabble](https://s3.us-east-2.amazonaws.com/d5mit.co.za/ttt_training_data/ttt_scrabble.html) <br>
   (github link for these applications: [d5mit](https://github.com/D5mit/d5mit_flask))
 
 ## Author
