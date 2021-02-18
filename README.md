@@ -17,37 +17,37 @@ do_train_modelL -> set to True if model S should be trained
 do_final_evaluL -> set to True if the final evaluation should be executed
 
 
-### Prerequisites
+### Overview of files:
+tic_tac_toe_dl.ipynb    - Jupyter notebook containing project to train an AI agent to play Tic Tac Toe
+ttt.py                  - python script will the Tic Tac Toe game logic
+main.py                 - Program to be able to run and test the game scripts
+README.md               - Explanation of project
+modelAgentLinki.h5      -   
+modelAgentLinki.json    -  
+modelAgentSmit.h5       -
+modelAgentSmit.json     -
 
-What things you need to install the software and how to install them
 
-```
-Give examples
-```
+
+
 
 ### Installing
 
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
-
+Packages required:
 ```
-Give the example
+pip3 install pytest
+pip3 install numpy
+pip3 install pandas
+pip3 install matplotlib
+pip3 install keras
+pip3 install tensorflow
 ```
-
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
 
 ## Running the tests
 
 the unit test can be run by typing in pytest in the console. The test are checking basic logic.
 
-## Authors
+## Author
 
 * **Danie Smit** - *Initial work* - [tic-tac-toe and deep learning](https://github.com/D5mit/tic-tac-toe_deep_learning)
 
